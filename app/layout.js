@@ -1,0 +1,12 @@
+export const metadata = {
+  title: "FINEX Tax Preparation – Stress‑Free Filing",
+  description: "Modern tax prep for individuals and businesses. Transparent pricing, fast turnaround, and year‑round support.",
+};
+
+export default function RootLayout({ children }) {
+  return (
+    <html lang="en">
+      <body className="bg-slate-50 text-zinc-900">{children}</body>
+    </html>
+  );
+}
