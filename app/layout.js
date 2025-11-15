@@ -1,5 +1,5 @@
 export const metadata = {
-  title: "FINEX Income Tax – Stress‑Free Filing",
+  title: "Income Tax – Stress‑Free Filing",
   description: "Modern tax prep for individuals and businesses. Transparent pricing, fast turnaround, and year‑round support.",
 };
 
