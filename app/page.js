@@ -92,7 +92,7 @@ export default function Page() {
                 className="object-contain"
               />
             </div>
-            FINEX Tax Preparation
+            Tax Preparation
           </a>
           <nav className="hidden gap-6 text-sm font-medium md:flex">
             <a className="hover:opacity-70" href="#services">
