@@ -16,13 +16,18 @@ import {
 import "./globals.css";
 
 const Section = ({ id, children, className = "" }) => (
-  <section id={id} className={`max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ${className}`}>
+  <section
+    id={id}
+    className={`max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ${className}`}
+  >
     {children}
   </section>
 );
 
 const Card = ({ children, className = "" }) => (
-  <div className={`rounded-2xl shadow-sm ring-1 ring-white/10 bg-white/90 backdrop-blur ${className}`}>
+  <div
+    className={`rounded-2xl shadow-sm ring-1 ring-white/10 bg-white/90 backdrop-blur ${className}`}
+  >
     {children}
   </div>
 );
@@ -68,7 +73,9 @@ const FaqItem = ({ q, a }) => {
         aria-expanded={open}
       >
         <span className="text-base font-semibold text-white">{q}</span>
-        <ChevronDown className={`h-5 w-5 text-white transition ${open ? "rotate-180" : ""}`} />
+        <ChevronDown
+          className={`h-5 w-5 text-white transition ${open ? "rotate-180" : ""}`}
+        />
       </button>
       {open && <p className="pb-4 text-sm text-slate-200">{a}</p>}
     </div>
@@ -80,7 +87,6 @@ export default function Page() {
     <div
       className="min-h-screen text-white relative"
       style={{
-        // NYC sunrise over Brooklyn Bridge background
         backgroundImage:
           "linear-gradient(rgba(0,5,25,0.78), rgba(0,5,25,0.78)), url('/brooklyn-bridge-sunrise.jpg')",
         backgroundSize: "cover",
@@ -88,28 +94,47 @@ export default function Page() {
         backgroundAttachment: "fixed",
       }}
     >
-      {/* Optional cinematic overlay */}
       <div className="absolute inset-0 bg-black/30 backdrop-blur-[2px]" />
 
       <div className="relative z-10">
-        {/* NAV */}
+        {/* NAVBAR */}
         <div className="sticky top-0 z-40 w-full bg-black/30 backdrop-blur ring-1 ring-white/10">
           <Section className="flex h-16 items-center justify-between">
             <a href="#home" className="flex items-center gap-2 font-semibold">
               <div className="relative h-8 w-8 overflow-hidden rounded-xl">
-                <Image src="/logo.png" alt="FINEX logo" fill sizes="32px" className="object-contain" />
+                <Image
+                  src="/logo.png"
+                  alt="FINEX logo"
+                  fill
+                  sizes="32px"
+                  className="object-contain"
+                />
               </div>
               FINEX Tax Preparation
             </a>
 
             <nav className="hidden gap-6 text-sm font-medium md:flex">
-              <a href="#services" className="hover:opacity-70">Services</a>
-              <a href="#pricing" className="hover:opacity-70">Pricing</a>
-              <a href="#process" className="hover:opacity-70">Process</a>
-              <a href="#academy" className="hover:opacity-70">Tax Academy</a>
-              <a href="#news" className="hover:opacity-70">News</a>
-              <a href="#faq" className="hover:opacity-70">FAQ</a>
-              <a href="#contact" className="hover:opacity-70">Contact</a>
+              <a href="#services" className="hover:opacity-70">
+                Services
+              </a>
+              <a href="#pricing" className="hover:opacity-70">
+                Pricing
+              </a>
+              <a href="#process" className="hover:opacity-70">
+                Process
+              </a>
+              <a href="#academy" className="hover:opacity-70">
+                Tax Academy
+              </a>
+              <a href="#news" className="hover:opacity-70">
+                News
+              </a>
+              <a href="#faq" className="hover:opacity-70">
+                FAQ
+              </a>
+              <a href="#contact" className="hover:opacity-70">
+                Contact
+              </a>
             </nav>
 
             <div className="hidden md:flex items-center gap-3">
@@ -137,7 +162,8 @@ export default function Page() {
                 Modern tax prep for busy people and growing businesses
               </h1>
               <p className="mt-4 text-base text-slate-200">
-                Transparent pricing, fast turnaround, and year-round support from licensed professionals.
+                Transparent pricing, fast turnaround, and year-round support from licensed
+                professionals.
               </p>
               <div className="mt-6 flex flex-col gap-3 sm:flex-row">
                 <Button href="https://calendly.com/finex101" className="bg-indigo-600 text-white">
@@ -207,20 +233,26 @@ export default function Page() {
                 <div className="text-2xl font-extrabold">$1,299</div>
               </div>
               <p className="mt-1 text-xs text-slate-600">Duration: 2 weeks</p>
+
               <ul className="mt-4 space-y-2 text-sm text-slate-700">
                 <li className="flex items-start gap-2">
-                  <span className="h-1.5 w-1.5 rounded-full bg-indigo-600" /> Individual Taxation
+                  <span className="h-1.5 w-1.5 rounded-full bg-indigo-600" />
+                  Individual Taxation
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="h-1.5 w-1.5 rounded-full bg-indigo-600" /> Business Formation
+                  <span className="h-1.5 w-1.5 rounded-full bg-indigo-600" />
+                  Business Formation
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="h-1.5 w-1.5 rounded-full bg-indigo-600" /> ERO Setup
+                  <span className="h-1.5 w-1.5 rounded-full bg-indigo-600" />
+                  ERO Setup
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="h-1.5 w-1.5 rounded-full bg-indigo-600" /> Tax Software Practice
+                  <span className="h-1.5 w-1.5 rounded-full bg-indigo-600" />
+                  Tax Software Practice
                 </li>
               </ul>
+
               <a
                 href="https://calendly.com/finex101"
                 className="mt-6 inline-flex w-full justify-center rounded-2xl bg-indigo-600 px-5 py-3 font-semibold text-white"
@@ -235,42 +267,66 @@ export default function Page() {
                 <h3 className="text-lg font-semibold">PLAN 3</h3>
                 <div className="text-2xl font-extrabold">$1,990</div>
               </div>
+
               <p className="mt-1 text-xs text-slate-600">Duration: 4 weeks</p>
+
               <ul className="mt-4 space-y-2 text-sm text-slate-700">
                 <li className="flex items-start gap-2">
-                  <span className="h-1.5 w-1.5 rounded-full bg-indigo-600" /> Individual Taxation
+                  <span className="h-1.5 w-1.5 rounded-full bg-indigo-600" />
+                  Individual Taxation
                 </li>
+
                 <li className="flex items-start gap-2">
-                  <span className="h-1.5 w-1.5 rounded-full bg-indigo-600" /> Business Formation
+                  <span className="h-1.5 w-1.5 rounded-full bg-indigo-600" />
+                  Business Formation
                 </li>
+
                 <li className="flex items-start gap-2">
-                  <span className="h-1.5 w-1.5 rounded-full bg-indigo-600" /> ERO Setup
+                  <span className="h-1.5 w-1.5 rounded-full bg-indigo-600" />
+                  ERO Setup
                 </li>
+
                 <li className="flex items-start gap-2">
-                  <span className="h-1.5 w-1.5 rounded-full bg-indigo-600" /> CRM Practice
+                  <span className="h-1.5 w-1.5 rounded-full bg-indigo-600" />
+                  CRM Practice
                 </li>
+
                 <li className="flex items-start gap-2">
-                  <span className="h-1.5 w-1.5 rounded-full bg-indigo-600" /> Tax Software Practice
+                  <span className="h-1.5 w-1.5 rounded-full bg-indigo-600" />
+                  Tax Software Practice
                 </li>
+
                 <li className="flex items-start gap-2">
-                  <span className="h-1.5 w-1.5 rounded-full bg-indigo-600" /> Corporate Return
+                  <span className="h-1.5 w-1.5 rounded-full bg-indigo-600" />
+                  Corporate Return
                 </li>
+
                 <li className="flex items-start gap-2">
-                  <span className="h-1.5 w-1.5 rounded-full bg-indigo-600" /> Partnership Return
+                  <span className="h-1.5 w-1.5 rounded-full bg-indigo-600" />
+                  Partnership Return
                 </li>
+
                 <li className="flex items-start gap-2">
-                  <span className="h-1.5 w-1.5 rounded-full bg-indigo-600" /> NYS Tax Pro Account
+                  <span className="h-1.5 w-1.5 rounded-full bg-indigo-600" />
+                  NYS Tax Pro Account
                 </li>
+
                 <li className="flex items-start gap-2">
-                  <span className="h-1.5 w-1.5 rounded-full bg-indigo-600" /> EA Exam Scheduling
+                  <span className="h-1.5 w-1.5 rounded-full bg-indigo-600" />
+                  EA Exam Scheduling
                 </li>
+
                 <li className="flex items-start gap-2">
-                  <span className="h-1.5 w-1.5 rounded-full bg-indigo-600" /> 3-Month Mentorship
+                  <span className="h-1.5 w-1.5 rounded-full bg-indigo-600" />
+                  3-Month Mentorship
                 </li>
+
                 <li className="flex items-start gap-2">
-                  <span className="h-1.5 w-1.5 rounded-full bg-indigo-600" /> 6-Month Video Access
+                  <span className="h-1.5 w-1.5 rounded-full bg-indigo-600" />
+                  6-Month Video Access
                 </li>
               </ul>
+
               <a
                 href="https://calendly.com/finex101"
                 className="mt-6 inline-flex w-full justify-center rounded-2xl bg-indigo-600 px-5 py-3 font-semibold text-white"
@@ -289,7 +345,6 @@ export default function Page() {
               <p className="mt-2 text-sm text-slate-700">Reply within one business day.</p>
 
               <div className="mt-6 space-y-3 text-sm">
-                {/* EMAIL REMOVED */}
                 <div className="flex items-center gap-2 text-black">
                   <MapPin className="h-4 w-4" /> New York, NY
                 </div>
@@ -315,16 +370,25 @@ export default function Page() {
             <form className="grid gap-4" onSubmit={(e) => e.preventDefault()}>
               <div>
                 <label className="text-sm font-medium text-black">Name</label>
-                <input className="rounded-xl border px-3 py-2 w-full" placeholder="Your full name" />
+                <input
+                  className="rounded-xl border px-3 py-2 w-full"
+                  placeholder="Your full name"
+                />
               </div>
 
               <div>
                 <label className="text-sm font-medium text-black">Email</label>
-                <input type="email" className="rounded-xl border px-3 py-2 w-full" placeholder="you@domain.com" />
+                <input
+                  type="email"
+                  className="rounded-xl border px-3 py-2 w-full"
+                  placeholder="you@domain.com"
+                />
               </div>
 
               <div>
-                <label className="text-sm font-medium text-black">What do you need help with?</label>
+                <label className="text-sm font-medium text-black">
+                  What do you need help with?
+                </label>
                 <select className="rounded-xl border px-3 py-2 w-full">
                   <option>Individual tax return</option>
                   <option>Business tax return</option>
@@ -356,7 +420,13 @@ export default function Page() {
             <div>
               <div className="flex items-center gap-2 font-semibold">
                 <div className="relative h-8 w-8 overflow-hidden rounded-xl">
-                  <Image src="/logo.png" alt="FINEX logo" fill sizes="32px" className="object-contain" />
+                  <Image
+                    src="/logo.png"
+                    alt="FINEX logo"
+                    fill
+                    sizes="32px"
+                    className="object-contain"
+                  />
                 </div>
                 FINEX Tax Preparation
               </div>
@@ -368,21 +438,36 @@ export default function Page() {
             <div className="text-sm">
               <div className="font-semibold text-white">Navigation</div>
               <ul className="mt-2 space-y-2 text-slate-300">
-                <li><a href="#services">Services</a></li>
-                <li><a href="#pricing">Pricing</a></li>
-                <li><a href="#process">Process</a></li>
-                <li><a href="#academy">Tax Academy</a></li>
-                <li><a href="#news">News</a></li>
-                <li><a href="#faq">FAQ</a></li>
-                <li><a href="#contact">Contact</a></li>
-                <li><a href="https://app.taxdome.com/login">Client Portal</a></li>
+                <li>
+                  <a href="#services">Services</a>
+                </li>
+                <li>
+                  <a href="#pricing">Pricing</a>
+                </li>
+                <li>
+                  <a href="#process">Process</a>
+                </li>
+                <li>
+                  <a href="#academy">Tax Academy</a>
+                </li>
+                <li>
+                  <a href="#news">News</a>
+                </li>
+                <li>
+                  <a href="#faq">FAQ</a>
+                </li>
+                <li>
+                  <a href="#contact">Contact</a>
+                </li>
+                <li>
+                  <a href="https://app.taxdome.com/login">Client Portal</a>
+                </li>
               </ul>
             </div>
 
             <div className="text-sm">
               <div className="font-semibold text-white">Contact</div>
               <ul className="mt-2 space-y-2 text-slate-300">
-                {/* EMAIL REMOVED */}
                 <li className="flex items-center gap-2">
                   <MapPin className="h-4 w-4" /> New York, NY
                 </li>
