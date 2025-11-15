@@ -1,6 +1,6 @@
 export const metadata = {
-  title: "come Tax – Stress‑Free Filing",
-  description: "Modern tax prep for individuals and businesses. Transparent pricing, fast turnaround, and year‑round support.",
+  title: "Income Tax – Stress‑Free Filing",
+  description: "Modern prep for individuals and businesses. Transparent pricing, fast turnaround, and year‑round support.",
 };
 
 export default function RootLayout({ children }) {
