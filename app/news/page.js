@@ -83,7 +83,7 @@ const Section = ({ children, className = "" }) => (
 );
 
 const Card = ({ children }) => (
-  <div className="rounded-2xl border border-white/15 bg-white/5 p-6 text-white shadow-xl shadow-indigo-950/20 backdrop-blur">
+  <div className="rounded-2xl border border-white/15 bg-slate-900/50 p-6 text-white shadow-xl shadow-indigo-950/20 backdrop-blur">
     {children}
   </div>
 );
@@ -99,17 +99,17 @@ export default function NewsPage() {
       className="min-h-screen text-white"
       style={{
         backgroundImage:
-          "radial-gradient(circle at top, rgba(59,130,246,0.12), transparent 55%), radial-gradient(circle at bottom, rgba(56,189,248,0.08), transparent 55%), linear-gradient(135deg, #020617 0%, #0f172a 60%, #0b1120 100%)",
+          "radial-gradient(circle at 15% 20%, rgba(79,70,229,0.25), transparent 45%), radial-gradient(circle at 80% 0%, rgba(56,189,248,0.18), transparent 50%), linear-gradient(135deg, #030712 0%, #0b1531 55%, #111c3d 100%)",
         backgroundSize: "cover",
         backgroundPosition: "center",
       }}
     >
-      <div className="border-b border-white/10 bg-black/40 backdrop-blur">
+      <div className="border-b border-white/10 bg-slate-950/70 backdrop-blur">
         <Section className="py-8 text-center">
-          <p className="text-xs uppercase tracking-[0.3em] text-indigo-200">Newsroom</p>
-          <h1 className="mt-3 text-4xl font-semibold text-white">FINEX News Feed</h1>
+          <p className="text-xs uppercase tracking-[0.3em] text-indigo-200">Field reports</p>
+          <h1 className="mt-3 text-4xl font-semibold text-white">FINEX Dispatch</h1>
           <p className="mt-4 text-base text-slate-200">
-            Follow policy alerts, service announcements, and wins from the FINEX community. Updated weekly during tax season.
+            Weekly intelligence on regulatory shifts, seasonal bandwidth, and academy updates from the FINEX team.
           </p>
         </Section>
       </div>
@@ -119,11 +119,11 @@ export default function NewsPage() {
           <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
             <div>
               <p className="text-sm font-semibold uppercase text-indigo-300">Latest dispatches</p>
-              <h2 className="mt-2 text-2xl font-bold text-white">What we are tracking right now</h2>
+              <h2 className="mt-2 text-2xl font-bold text-white">What we're watching right now</h2>
             </div>
             <a
               href="https://calendly.com/finex101"
-              className="inline-flex items-center justify-center rounded-2xl bg-indigo-500/90 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-indigo-900/30 transition hover:-translate-y-0.5"
+              className="inline-flex items-center justify-center rounded-2xl bg-gradient-to-r from-indigo-500/90 to-cyan-400/80 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-indigo-900/30 transition hover:-translate-y-0.5"
             >
               Talk with an advisor
             </a>
