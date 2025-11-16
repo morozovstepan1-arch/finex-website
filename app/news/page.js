@@ -1,5 +1,5 @@
 // app/news/page.js
-// Server component: auto-imports IRS news + matches eztax.app homepage style
+// Server component: auto-imports IRS news + includes NYS inflation refund highlight
 
 import Link from "next/link";
 import {
@@ -17,7 +17,6 @@ const IRS_NEWS_URL =
 
 async function getIrsNews() {
   const res = await fetch(IRS_NEWS_URL, {
-    // Let Next.js cache this on the server
     next: { revalidate: 3600 },
   });
 
@@ -27,19 +26,12 @@ async function getIrsNews() {
   }
 
   const html = await res.text();
-  return parseIrsNewsHtml(html).slice(0, 12); // keep top 10–12 items
+  return parseIrsNewsHtml(html).slice(0, 12);
 }
 
 /**
  * Very simple HTML parser tailored to the current IRS
  * "News releases for current month" page structure.
- *
- * As of Nov 2025 the page renders each item roughly as:
- *
- *   <h3><a href="/newsroom/...">Title…</a></h3>
- *   <p><strong>IR-2025-112, Nov. 13, 2025</strong> — Summary…</p>
- *
- * If IRS changes markup, update this regex.
  */
 function parseIrsNewsHtml(html) {
   const items = [];
@@ -52,22 +44,20 @@ function parseIrsNewsHtml(html) {
     const [, href, rawTitle, rawMeta, rawSummary] = match;
 
     const title = stripTags(rawTitle).trim();
-    const meta = stripTags(rawMeta).trim(); // e.g. "IR-2025-112, Nov. 13, 2025"
+    const meta = stripTags(rawMeta).trim();
     const summary = stripTags(rawSummary).trim();
 
-    // Try to split IR code and date from meta
     let irCode = null;
     let dateString = null;
 
     const parts = meta.split(",");
     if (parts.length >= 2) {
-      irCode = parts[0].trim(); // "IR-2025-112"
-      dateString = parts.slice(1).join(",").trim(); // "Nov. 13, 2025"
+      irCode = parts[0].trim();
+      dateString = parts.slice(1).join(",").trim();
     } else {
       irCode = meta;
     }
 
-    // Normalized absolute URL
     const url = href.startsWith("http")
       ? href
       : `https://www.irs.gov${href}`;
@@ -94,7 +84,7 @@ export default async function NewsPage() {
   return (
     <main className="min-h-screen bg-gradient-to-b from-slate-950 via-slate-950 to-slate-900 text-slate-50">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16 space-y-10">
-        {/* Top bar – matches a modern finance landing style */}
+        {/* Top bar */}
         <div className="flex items-center justify-between gap-4">
           <Link
             href="/"
@@ -112,20 +102,19 @@ export default async function NewsPage() {
           </Link>
         </div>
 
-        {/* Header – aligned with your hero typography */}
+        {/* Header */}
         <header className="space-y-5">
           <div className="inline-flex items-center gap-2 rounded-full border border-emerald-400/40 bg-emerald-500/10 px-3 py-1 text-xs font-medium text-emerald-200">
             <Newspaper className="h-3 w-3" />
-            Real-time IRS News & Releases
+            Real-time IRS & NY tax news
           </div>
           <div className="space-y-3">
             <h1 className="text-3xl sm:text-4xl font-semibold tracking-tight">
-              IRS news that actually matters to your taxes
+              Tax updates that actually matter to your refund
             </h1>
             <p className="text-sm sm:text-base text-slate-300 max-w-2xl">
-              This page pulls live updates from the official IRS newsroom so
-              you and your clients can see what&apos;s changing—without
-              refreshing IRS.gov all day.
+              We pull live headlines from IRS.gov and highlight key New York
+              changes so you don&apos;t have to dig through government sites.
             </p>
           </div>
         </header>
@@ -150,13 +139,83 @@ export default async function NewsPage() {
             </div>
           ) : (
             <div className="grid gap-5 sm:gap-6">
+              {/* 🔵 Featured NY State item */}
+              <article className="group rounded-2xl bg-white/95 text-slate-900 shadow-sm ring-1 ring-indigo-200/80 backdrop-blur-sm hover:-translate-y-0.5 hover:shadow-md hover:ring-indigo-400/70 transition">
+                <div className="p-5 sm:p-6 space-y-3">
+                  <div className="flex flex-wrap items-center gap-3 text-xs text-slate-500">
+                    <span className="inline-flex items-center gap-1">
+                      <Calendar className="h-3 w-3" />
+                      Updated 2025 – New York State
+                    </span>
+                    <span className="h-1 w-1 rounded-full bg-slate-300" />
+                    <span className="px-2 py-0.5 rounded-full border border-indigo-200 bg-indigo-50 text-[11px] font-medium tracking-wide text-indigo-700">
+                      NY Inflation Refund Checks
+                    </span>
+                  </div>
+
+                  <h2 className="text-base sm:text-lg font-semibold leading-snug text-slate-900 group-hover:text-indigo-700">
+                    New York&apos;s 2025 inflation refund checks: who qualifies
+                    and how much you may receive
+                  </h2>
+
+                  <p className="text-sm text-slate-600 max-w-3xl">
+                    As part of the 2025–2026 New York State budget, eligible
+                    residents are receiving one-time{" "}
+                    <span className="font-medium">
+                      inflation refund checks of $150 to $400
+                    </span>
+                    . You may qualify if you filed a 2023 NY resident return
+                    (Form IT-201), were not claimed as a dependent, and your
+                    income falls within the state&apos;s thresholds. Checks are
+                    being mailed automatically—there is{" "}
+                    <span className="font-medium">
+                      no application and no need to share personal information
+                      by phone, text, or email
+                    </span>
+                    .
+                  </p>
+
+                  <p className="text-sm text-slate-600 max-w-3xl">
+                    Be cautious of scams: the Tax Department will{" "}
+                    <span className="font-medium">
+                      not contact you to &quot;activate&quot; or
+                      &quot;claim&quot; this refund
+                    </span>
+                    . If someone asks for your banking or login details regarding
+                    this check, treat it as suspicious and verify directly with
+                    NYS.
+                  </p>
+
+                  <div className="pt-1 flex flex-wrap gap-4">
+                    <a
+                      href="https://www.tax.ny.gov/pit/inflation-refund-checks.htm"
+                      target="_blank"
+                      rel="noreferrer"
+                      className="inline-flex items-center gap-1.5 text-sm font-medium text-indigo-700 hover:text-indigo-600"
+                    >
+                      Details from New York State
+                      <ExternalLink className="h-3.5 w-3.5" />
+                    </a>
+                    <a
+                      href="https://portal.311.nyc.gov/article/?kanumber=KA-03681"
+                      target="_blank"
+                      rel="noreferrer"
+                      className="inline-flex items-center gap-1.5 text-sm font-medium text-slate-600 hover:text-slate-700"
+                    >
+                      NYC311 overview
+                      <ExternalLink className="h-3.5 w-3.5" />
+                    </a>
+                  </div>
+                </div>
+              </article>
+
+              {/* IRS items below */}
               {newsItems.map((item, idx) => (
                 <article
                   key={`${item.irCode ?? item.title}-${idx}`}
                   className="group rounded-2xl bg-white/95 text-slate-900 shadow-sm ring-1 ring-slate-200/70 backdrop-blur-sm hover:-translate-y-0.5 hover:shadow-md hover:ring-emerald-400/60 transition"
                 >
                   <div className="p-5 sm:p-6 space-y-3">
-                    {/* Meta row */}
                     <div className="flex flex-wrap items-center gap-3 text-xs text-slate-500">
                       {item.dateString && (
                         <span className="inline-flex items-center gap-1">
@@ -174,19 +233,16 @@ export default async function NewsPage() {
                       )}
                     </div>
 
-                    {/* Title */}
                     <h2 className="text-base sm:text-lg font-semibold leading-snug text-slate-900 group-hover:text-emerald-700">
                       {item.title}
                     </h2>
 
-                    {/* Summary */}
                     {item.summary && (
                       <p className="text-sm text-slate-600 max-w-3xl">
                         {item.summary}
                       </p>
                     )}
 
-                    {/* Link */}
                     <div className="pt-1">
                       <a
                         href={item.url}
@@ -205,14 +261,14 @@ export default async function NewsPage() {
           )}
         </section>
 
-        {/* CTA that fits your brand */}
+        {/* CTA */}
         <section className="mt-4 rounded-2xl border border-emerald-500/40 bg-gradient-to-r from-emerald-500/15 via-emerald-500/10 to-teal-500/15 p-5 sm:p-6">
           <h3 className="text-base sm:text-lg font-semibold mb-1">
-            Want these IRS changes translated into plain English for your
+            Want these IRS and NY changes translated into plain English for your
             situation?
           </h3>
           <p className="text-sm text-emerald-50/90 mb-3 max-w-xl">
-            Book a session and we&apos;ll walk through what today&apos;s IRS
+            Book a session and we&apos;ll walk through what today&apos;s tax
             updates mean for your refund, balance due, and planning.
           </p>
           <Link
@@ -226,4 +282,3 @@ export default async function NewsPage() {
     </main>
   );
 }
-
