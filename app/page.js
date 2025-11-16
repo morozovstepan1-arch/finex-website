@@ -113,7 +113,7 @@ export default function Page() {
               <a href="#academy" className="hover:opacity-70">
                 Tax Academy
               </a>
-              <a href="#news" className="hover:opacity-70">
+              <a href="/news" className="hover:opacity-70">
                 News
               </a>
               <a href="#faq" className="hover:opacity-70">
@@ -559,6 +559,15 @@ export default function Page() {
                 Learn more →
               </a>
             </Card>
+          </div>
+
+          <div className="mt-10 text-center">
+            <a
+              href="/news"
+              className="inline-flex items-center justify-center rounded-2xl bg-white/90 px-6 py-3 text-sm font-semibold text-slate-900 shadow-lg shadow-black/30 transition hover:-translate-y-0.5"
+            >
+              Explore the full news feed →
+            </a>
           </div>
         </Section>
 
