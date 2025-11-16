@@ -447,7 +447,7 @@ export default function HomePage() {
           <div className="grid gap-6 md:grid-cols-3">
             <AcademyPlan
               name="PLAN 1"
-              price="$599"
+              price="$601"
               duration="1 week"
               bullets={["Core individual taxation foundations."]}
             />
