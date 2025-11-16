@@ -79,11 +79,11 @@ const resources = [
 ];
 
 const Section = ({ children, className = "" }) => (
-  <section className={`max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 ${className}`}>{children}</section>
+  <section className={`relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 ${className}`}>{children}</section>
 );
 
 const Card = ({ children }) => (
-  <div className="rounded-2xl border border-white/15 bg-slate-900/50 p-6 text-white shadow-xl shadow-indigo-950/20 backdrop-blur">
+  <div className="rounded-2xl bg-white/95 p-6 text-slate-900 shadow-xl shadow-slate-900/10 ring-1 ring-black/5 backdrop-blur">
     {children}
   </div>
 );
@@ -96,15 +96,16 @@ export const metadata = {
 export default function NewsPage() {
   return (
     <div
-      className="min-h-screen text-white"
+      className="relative min-h-screen text-white"
       style={{
         backgroundImage:
-          "radial-gradient(circle at 15% 20%, rgba(79,70,229,0.25), transparent 45%), radial-gradient(circle at 80% 0%, rgba(56,189,248,0.18), transparent 50%), linear-gradient(135deg, #030712 0%, #0b1531 55%, #111c3d 100%)",
+          "radial-gradient(circle at top, rgba(59,130,246,0.18), transparent 55%), radial-gradient(circle at bottom, rgba(56,189,248,0.14), transparent 55%), linear-gradient(135deg, #020617 0%, #020617 40%, #0f172a 100%)",
         backgroundSize: "cover",
         backgroundPosition: "center",
       }}
     >
-      <div className="border-b border-white/10 bg-slate-950/70 backdrop-blur">
+      <div className="absolute inset-0 bg-black/40 backdrop-blur-[2px]" />
+      <div className="relative z-10 border-b border-white/10 bg-black/40 backdrop-blur">
         <Section className="py-8 text-center">
           <p className="text-xs uppercase tracking-[0.3em] text-indigo-200">Field reports</p>
           <h1 className="mt-3 text-4xl font-semibold text-white">FINEX Dispatch</h1>
@@ -114,16 +115,16 @@ export default function NewsPage() {
         </Section>
       </div>
 
-      <main className="space-y-16 py-16">
+      <main className="relative z-10 space-y-16 py-16">
         <Section className="space-y-8">
           <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
             <div>
-              <p className="text-sm font-semibold uppercase text-indigo-300">Latest dispatches</p>
+              <p className="text-sm font-semibold uppercase text-indigo-200">Latest dispatches</p>
               <h2 className="mt-2 text-2xl font-bold text-white">What we're watching right now</h2>
             </div>
             <a
               href="https://calendly.com/finex101"
-              className="inline-flex items-center justify-center rounded-2xl bg-gradient-to-r from-indigo-500/90 to-cyan-400/80 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-indigo-900/30 transition hover:-translate-y-0.5"
+              className="inline-flex items-center justify-center rounded-2xl bg-white/90 px-6 py-3 text-sm font-semibold text-slate-900 shadow-lg shadow-black/20 ring-1 ring-white/50 transition hover:-translate-y-0.5"
             >
               Talk with an advisor
             </a>
@@ -132,15 +133,15 @@ export default function NewsPage() {
           <div className="grid gap-6 md:grid-cols-2">
             {newsItems.map((item) => (
               <Card key={item.title}>
-                <div className="text-xs font-semibold uppercase tracking-wide text-indigo-200">{item.date}</div>
-                <p className="mt-1 inline-flex rounded-full border border-indigo-400/40 px-2 py-0.5 text-xs text-indigo-100">
+                <div className="text-xs font-semibold uppercase tracking-wide text-indigo-600">{item.date}</div>
+                <p className="mt-1 inline-flex rounded-full border border-indigo-100 bg-indigo-50 px-2 py-0.5 text-xs text-indigo-700">
                   {item.tag}
                 </p>
-                <h3 className="mt-4 text-xl font-semibold text-white">{item.title}</h3>
-                <p className="mt-2 text-sm text-slate-200">{item.description}</p>
+                <h3 className="mt-4 text-xl font-semibold text-slate-900">{item.title}</h3>
+                <p className="mt-2 text-sm text-slate-600">{item.description}</p>
                 <a
                   href={item.cta.href}
-                  className="mt-4 inline-flex text-sm font-semibold text-indigo-300 hover:text-indigo-100"
+                  className="mt-4 inline-flex text-sm font-semibold text-indigo-600 hover:text-indigo-400"
                 >
                   {item.cta.label} →
                 </a>
@@ -151,14 +152,14 @@ export default function NewsPage() {
 
         <Section className="space-y-8">
           <div>
-            <p className="text-sm font-semibold uppercase text-indigo-300">Signals & insights</p>
+            <p className="text-sm font-semibold uppercase text-indigo-200">Signals & insights</p>
             <h2 className="mt-2 text-2xl font-bold text-white">Quick hits from the FINEX desk</h2>
           </div>
           <div className="grid gap-6 md:grid-cols-3">
             {highlights.map((highlight) => (
               <Card key={highlight.title}>
-                <h3 className="text-lg font-semibold text-white">{highlight.title}</h3>
-                <p className="mt-3 text-sm text-slate-200">{highlight.detail}</p>
+                <h3 className="text-lg font-semibold text-slate-900">{highlight.title}</h3>
+                <p className="mt-3 text-sm text-slate-600">{highlight.detail}</p>
               </Card>
             ))}
           </div>
@@ -166,38 +167,38 @@ export default function NewsPage() {
 
         <Section className="space-y-8">
           <div>
-            <p className="text-sm font-semibold uppercase text-indigo-300">Stay connected</p>
+            <p className="text-sm font-semibold uppercase text-indigo-200">Stay connected</p>
             <h2 className="mt-2 text-2xl font-bold text-white">Resources mentioned across our updates</h2>
           </div>
           <div className="grid gap-6 md:grid-cols-3">
             {resources.map((resource) => (
               <Card key={resource.title}>
-                <h3 className="text-lg font-semibold text-white">{resource.title}</h3>
-                <p className="mt-3 text-sm text-slate-200">{resource.description}</p>
+                <h3 className="text-lg font-semibold text-slate-900">{resource.title}</h3>
+                <p className="mt-3 text-sm text-slate-600">{resource.description}</p>
                 <a
                   href={resource.href}
-                  className="mt-4 inline-flex text-sm font-semibold text-indigo-300 hover:text-indigo-100"
+                  className="mt-4 inline-flex text-sm font-semibold text-indigo-600 hover:text-indigo-400"
                 >
                   Visit resource →
                 </a>
               </Card>
             ))}
           </div>
-          <div className="rounded-3xl border border-white/10 bg-white/5 p-8 text-center text-white shadow-xl shadow-indigo-950/30">
-            <p className="text-sm font-semibold uppercase tracking-widest text-indigo-200">Newsletter</p>
-            <h3 className="mt-3 text-2xl font-semibold text-white">Get news in your inbox</h3>
-            <p className="mt-3 text-sm text-slate-200">
+          <div className="rounded-3xl bg-white/90 p-8 text-center text-slate-900 shadow-2xl shadow-slate-900/10 ring-1 ring-black/5">
+            <p className="text-sm font-semibold uppercase tracking-widest text-indigo-600">Newsletter</p>
+            <h3 className="mt-3 text-2xl font-semibold text-slate-900">Get news in your inbox</h3>
+            <p className="mt-3 text-sm text-slate-600">
               Quarterly digest with tax deadlines, regulatory alerts, and practice availability. No spam, unsubscribe anytime.
             </p>
             <form className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-center">
               <input
                 type="email"
                 placeholder="Email address"
-                className="h-12 w-full rounded-2xl border border-white/30 bg-black/40 px-4 text-sm text-white placeholder:text-slate-400 focus:border-indigo-400 focus:outline-none sm:w-72"
+                className="h-12 w-full rounded-2xl border border-slate-300 bg-white px-4 text-sm text-slate-900 placeholder:text-slate-400 focus:border-indigo-400 focus:outline-none sm:w-72"
               />
               <button
                 type="submit"
-                className="inline-flex h-12 items-center justify-center rounded-2xl bg-indigo-500/90 px-6 text-sm font-semibold text-white shadow-lg shadow-indigo-900/30"
+                className="inline-flex h-12 items-center justify-center rounded-2xl bg-indigo-600 px-6 text-sm font-semibold text-white shadow-lg shadow-indigo-900/30"
               >
                 Subscribe
               </button>
