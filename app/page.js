@@ -269,7 +269,7 @@ export default function Page() {
             <Card className="p-6">
               <div className="flex items-baseline justify-between">
                 <h3 className="text-lg font-semibold">PLAN 1</h3>
-                <div className="text-2xl font-extrabold">$601</div>
+                <div className="text-2xl font-extrabold">$599</div>
               </div>
               <p className="mt-1 text-xs text-slate-600">Duration: 1 week</p>
               <ul className="mt-4 space-y-2 text-sm text-slate-700">
