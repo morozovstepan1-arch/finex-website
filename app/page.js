@@ -97,7 +97,7 @@ export default function Page() {
               <div className="relative h-8 w-8 overflow-hidden rounded-xl bg-white/10">
                 <Image src="/logo.png" alt="FINEX logo" fill sizes="32px" className="object-contain" />
               </div>
-              FINEX Tax Preparation
+              FINEX "EZ-Tax"
             </a>
 
             <nav className="hidden gap-6 text-sm font-medium md:flex">
@@ -675,7 +675,7 @@ export default function Page() {
                 <div className="relative h-8 w-8 overflow-hidden rounded-xl bg-white/10">
                   <Image src="/logo.png" alt="FINEX logo" fill sizes="32px" className="object-contain" />
                 </div>
-                FINEX Tax Preparation
+                FINEX "EZ-Tax"
               </div>
               <p className="mt-3 text-sm text-slate-300">
                 © {new Date().getFullYear()} FINEX. All rights reserved.
