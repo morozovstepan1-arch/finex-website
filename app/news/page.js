@@ -1,8 +1,3 @@
-git add app/news/page.js
-git commit -m "Add IRS news page"
-git push
-
-
 // app/news/page.js
 // Server component: auto-imports IRS news + matches eztax.app homepage style
 
