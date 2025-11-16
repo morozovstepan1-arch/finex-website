@@ -7,11 +7,9 @@ import {
   Calculator,
   FileText,
   ShieldCheck,
-  Mail,
   MapPin,
   Clock,
   ChevronDown,
-  Star,
 } from "lucide-react";
 import "./globals.css";
 
@@ -83,21 +81,20 @@ export default function Page() {
       className="min-h-screen text-white relative"
       style={{
         backgroundImage:
-          "linear-gradient(rgba(0,5,25,0.78), rgba(0,5,25,0.78)), url('https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&w=1920&q=80')",
+          "radial-gradient(circle at top, rgba(59,130,246,0.18), transparent 55%), radial-gradient(circle at bottom, rgba(56,189,248,0.14), transparent 55%), linear-gradient(135deg, #020617 0%, #020617 40%, #0f172a 100%)",
         backgroundSize: "cover",
         backgroundPosition: "center",
-        backgroundAttachment: "fixed",
       }}
     >
       {/* Optional cinematic overlay */}
-      <div className="absolute inset-0 bg-black/30 backdrop-blur-[2px]" />
+      <div className="absolute inset-0 bg-black/40 backdrop-blur-[2px]" />
 
       <div className="relative z-10">
         {/* NAV */}
-        <div className="sticky top-0 z-40 w-full bg-black/30 backdrop-blur ring-1 ring-white/10">
+        <div className="sticky top-0 z-40 w-full bg-black/40 backdrop-blur ring-1 ring-white/10">
           <Section className="flex h-16 items-center justify-between">
             <a href="#home" className="flex items-center gap-2 font-semibold">
-              <div className="relative h-8 w-8 overflow-hidden rounded-xl">
+              <div className="relative h-8 w-8 overflow-hidden rounded-xl bg-white/10">
                 <Image src="/logo.png" alt="FINEX logo" fill sizes="32px" className="object-contain" />
               </div>
               FINEX Tax Preparation
@@ -186,6 +183,57 @@ export default function Page() {
           </motion.div>
         </Section>
 
+        {/* SERVICES */}
+        <Section id="services" className="py-14">
+          <div className="mx-auto max-w-2xl text-center">
+            <h2 className="text-2xl font-bold sm:text-3xl text-white">Services</h2>
+            <p className="mt-3 text-slate-200">
+              End-to-end tax and advisory services for individuals, families, and growing businesses.
+            </p>
+          </div>
+
+          <div className="mt-10 grid gap-6 md:grid-cols-3">
+            <Card className="p-6">
+              <h3 className="text-lg font-semibold">Individual & Family Tax</h3>
+              <p className="mt-2 text-sm text-slate-700">
+                Accurate, optimized returns for W-2 earners, investors, and multi-state filers.
+              </p>
+              <ul className="mt-4 space-y-2 text-sm text-slate-700">
+                <li>✓ Federal & State returns</li>
+                <li>✓ Credits & deductions review</li>
+                <li>✓ Multi-state & remote work</li>
+                <li>✓ IRS notice guidance</li>
+              </ul>
+            </Card>
+
+            <Card className="p-6">
+              <h3 className="text-lg font-semibold">Business & Self-Employed</h3>
+              <p className="mt-2 text-sm text-slate-700">
+                Strategic support for LLCs, S-Corps, C-Corps, and freelancers.
+              </p>
+              <ul className="mt-4 space-y-2 text-sm text-slate-700">
+                <li>✓ Entity selection & setup</li>
+                <li>✓ Quarterly tax planning</li>
+                <li>✓ Books review & cleanup</li>
+                <li>✓ Payroll & 1099 support</li>
+              </ul>
+            </Card>
+
+            <Card className="p-6">
+              <h3 className="text-lg font-semibold">Planning & Advisory</h3>
+              <p className="mt-2 text-sm text-slate-700">
+                Year-round tax strategy tailored to your goals and cash flow.
+              </p>
+              <ul className="mt-4 space-y-2 text-sm text-slate-700">
+                <li>✓ Tax-efficient investing</li>
+                <li>✓ Retirement & stock options</li>
+                <li>✓ Multi-year scenario planning</li>
+                <li>✓ On-call tax questions</li>
+              </ul>
+            </Card>
+          </div>
+        </Section>
+
         {/* PRICING */}
         <Section id="pricing" className="py-14">
           <div className="mx-auto max-w-2xl text-center">
@@ -253,6 +301,81 @@ export default function Page() {
               >
                 Start Filing
               </a>
+            </Card>
+          </div>
+        </Section>
+
+        {/* PROCESS */}
+        <Section id="process" className="py-14">
+          <div className="mx-auto max-w-2xl text-center">
+            <h2 className="text-2xl font-bold sm:text-3xl text-white">How It Works</h2>
+            <p className="mt-3 text-slate-200">
+              A streamlined, digital-first process designed to save you time and reduce stress.
+            </p>
+          </div>
+
+          <div className="mt-10 grid gap-6 md:grid-cols-2 items-start">
+            <Card className="p-6">
+              <h3 className="text-lg font-semibold">Simple 4-step process</h3>
+              <ol className="mt-4 space-y-4 text-sm text-slate-700">
+                <li className="flex gap-3">
+                  <span className="mt-1 flex h-6 w-6 items-center justify-center rounded-full bg-indigo-600 text-xs font-semibold text-white">
+                    1
+                  </span>
+                  <div>
+                    <div className="font-semibold">Book a consult</div>
+                    <p className="text-slate-600">
+                      Choose a time that works for you and tell us about your situation.
+                    </p>
+                  </div>
+                </li>
+                <li className="flex gap-3">
+                  <span className="mt-1 flex h-6 w-6 items-center justify-center rounded-full bg-indigo-600 text-xs font-semibold text-white">
+                    2
+                  </span>
+                  <div>
+                    <div className="font-semibold">Upload your documents</div>
+                    <p className="text-slate-600">
+                      Securely upload W-2s, 1099s, statements, and prior returns to our portal.
+                    </p>
+                  </div>
+                </li>
+                <li className="flex gap-3">
+                  <span className="mt-1 flex h-6 w-6 items-center justify-center rounded-full bg-indigo-600 text-xs font-semibold text-white">
+                    3
+                  </span>
+                  <div>
+                    <div className="font-semibold">Review your draft</div>
+                    <p className="text-slate-600">
+                      We walk you through your return, answer questions, and finalize everything.
+                    </p>
+                  </div>
+                </li>
+                <li className="flex gap-3">
+                  <span className="mt-1 flex h-6 w-6 items-center justify-center rounded-full bg-indigo-600 text-xs font-semibold text-white">
+                    4
+                  </span>
+                  <div>
+                    <div className="font-semibold">File & plan ahead</div>
+                    <p className="text-slate-600">
+                      We e-file your return and provide actionable recommendations for next year.
+                    </p>
+                  </div>
+                </li>
+              </ol>
+            </Card>
+
+            <Card className="p-6">
+              <h3 className="text-lg font-semibold">Built for busy professionals</h3>
+              <ul className="mt-4 space-y-3 text-sm text-slate-700">
+                <li>✓ 100% remote option available</li>
+                <li>✓ Clear deadlines & expectations</li>
+                <li>✓ Secure messaging inside the portal</li>
+                <li>✓ Support even after your return is filed</li>
+              </ul>
+              <Button href="https://calendly.com/finex101" className="mt-6 bg-indigo-600 text-white w-full justify-center">
+                Start the process
+              </Button>
             </Card>
           </div>
         </Section>
@@ -439,6 +562,35 @@ export default function Page() {
           </div>
         </Section>
 
+        {/* FAQ */}
+        <Section id="faq" className="py-14">
+          <div className="mx-auto max-w-2xl text-center">
+            <h2 className="text-2xl font-bold sm:text-3xl text-white">FAQs</h2>
+            <p className="mt-3 text-slate-200">
+              Answers to common questions about working with FINEX.
+            </p>
+          </div>
+
+          <div className="mt-8 max-w-3xl mx-auto">
+            <FaqItem
+              q="Do you work with clients outside New York?"
+              a="Yes. We work remotely with clients across the U.S. using our secure online portal, as long as you are required to file a U.S. tax return."
+            />
+            <FaqItem
+              q="How long does it take to complete my return?"
+              a="Most individual returns are completed within 5–7 business days once we have all your documents. Complex and business returns may take longer, but we’ll share a clear timeline upfront."
+            />
+            <FaqItem
+              q="What if I receive an IRS or state notice?"
+              a="If a notice relates to a return we prepared, we will help you interpret it and advise on next steps. Many issues can be handled with a written response or minor correction."
+            />
+            <FaqItem
+              q="Do you offer payment plans?"
+              a="In many cases, yes. For larger engagements and academy programs, we can split payments into installments. Let us know your situation during the consultation."
+            />
+          </div>
+        </Section>
+
         {/* CONTACT */}
         <Section id="contact" className="py-14">
           <Card className="grid gap-8 p-6 md:grid-cols-2 md:p-10">
@@ -516,11 +668,11 @@ export default function Page() {
         </Section>
 
         {/* FOOTER */}
-        <footer className="mt-8 border-t border-white/20 bg-black/30 backdrop-blur">
+        <footer className="mt-8 border-t border-white/20 bg-black/40 backdrop-blur">
           <Section className="grid gap-6 py-8 md:grid-cols-3">
             <div>
               <div className="flex items-center gap-2 font-semibold">
-                <div className="relative h-8 w-8 overflow-hidden rounded-xl">
+                <div className="relative h-8 w-8 overflow-hidden rounded-xl bg-white/10">
                   <Image src="/logo.png" alt="FINEX logo" fill sizes="32px" className="object-contain" />
                 </div>
                 FINEX Tax Preparation
@@ -533,30 +685,14 @@ export default function Page() {
             <div className="text-sm">
               <div className="font-semibold text-white">Navigation</div>
               <ul className="mt-2 space-y-2 text-slate-300">
-                <li>
-                  <a href="#services">Services</a>
-                </li>
-                <li>
-                  <a href="#pricing">Pricing</a>
-                </li>
-                <li>
-                  <a href="#process">Process</a>
-                </li>
-                <li>
-                  <a href="#academy">Tax Academy</a>
-                </li>
-                <li>
-                  <a href="#news">News</a>
-                </li>
-                <li>
-                  <a href="#faq">FAQ</a>
-                </li>
-                <li>
-                  <a href="#contact">Contact</a>
-                </li>
-                <li>
-                  <a href="https://app.taxdome.com/login">Client Portal</a>
-                </li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#pricing">Pricing</a></li>
+                <li><a href="#process">Process</a></li>
+                <li><a href="#academy">Tax Academy</a></li>
+                <li><a href="#news">News</a></li>
+                <li><a href="#faq">FAQ</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="https://app.taxdome.com/login">Client Portal</a></li>
               </ul>
             </div>
 
