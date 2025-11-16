@@ -91,7 +91,6 @@ export default function Page() {
       <div className="absolute inset-0 bg-black/30 backdrop-blur-[2px]" />
 
       <div className="relative z-10">
-
         {/* NAV */}
         <div className="sticky top-0 z-40 w-full bg-black/30 backdrop-blur ring-1 ring-white/10">
           <Section className="flex h-16 items-center justify-between">
@@ -171,6 +170,77 @@ export default function Page() {
           </motion.div>
         </Section>
 
+        {/* PRICING */}
+        <Section id="pricing" className="py-14">
+          <div className="mx-auto max-w-2xl text-center">
+            <h2 className="text-2xl font-bold sm:text-3xl text-white">Pricing</h2>
+            <p className="mt-3 text-slate-200">
+              Transparent, simple, and all-inclusive tax preparation packages.
+            </p>
+          </div>
+
+          <div className="mt-10 grid gap-6 md:grid-cols-3">
+            {/* BASIC RETURN */}
+            <Card className="p-6">
+              <h3 className="text-lg font-semibold text-black">Basic Individual Return</h3>
+              <div className="mt-2 text-3xl font-extrabold text-black">$199</div>
+              <p className="mt-1 text-xs text-slate-700">W-2 employees with simple returns</p>
+              <ul className="mt-4 space-y-2 text-sm text-slate-700">
+                <li>✓ Federal + State return</li>
+                <li>✓ Up to 2 W-2s</li>
+                <li>✓ e-File included</li>
+                <li>✓ 3-month support</li>
+              </ul>
+              <a
+                href="https://calendly.com/finex101"
+                className="mt-6 inline-flex w-full justify-center rounded-2xl bg-indigo-600 px-5 py-3 font-semibold text-white"
+              >
+                Start Filing
+              </a>
+            </Card>
+
+            {/* STANDARD RETURN */}
+            <Card className="p-6 ring-2 ring-indigo-600">
+              <h3 className="text-lg font-semibold text-black">Standard Return</h3>
+              <div className="mt-2 text-3xl font-extrabold text-black">$349</div>
+              <p className="mt-1 text-xs text-slate-700">Most taxpayers choose this</p>
+              <ul className="mt-4 space-y-2 text-sm text-slate-700">
+                <li>✓ All Basic features</li>
+                <li>✓ 1099 income</li>
+                <li>✓ Investments (stocks/crypto)</li>
+                <li>✓ Itemized deductions</li>
+                <li>✓ Child tax credits</li>
+              </ul>
+              <a
+                href="https://calendly.com/finex101"
+                className="mt-6 inline-flex w-full justify-center rounded-2xl bg-indigo-600 px-5 py-3 font-semibold text-white"
+              >
+                Start Filing
+              </a>
+            </Card>
+
+            {/* BUSINESS RETURN */}
+            <Card className="p-6">
+              <h3 className="text-lg font-semibold text-black">Business Return</h3>
+              <div className="mt-2 text-3xl font-extrabold text-black">$699+</div>
+              <p className="mt-1 text-xs text-slate-700">S-Corp, C-Corp, Partnership, Schedule C</p>
+              <ul className="mt-4 space-y-2 text-sm text-slate-700">
+                <li>✓ Federal + State returns</li>
+                <li>✓ Books review</li>
+                <li>✓ Depreciation schedules</li>
+                <li>✓ Estimated tax planning</li>
+                <li>✓ Year-round support</li>
+              </ul>
+              <a
+                href="https://calendly.com/finex101"
+                className="mt-6 inline-flex w-full justify-center rounded-2xl bg-indigo-600 px-5 py-3 font-semibold text-white"
+              >
+                Start Filing
+              </a>
+            </Card>
+          </div>
+        </Section>
+
         {/* ACADEMY */}
         <Section id="academy" className="py-14">
           <div className="mx-auto max-w-2xl text-center">
@@ -179,7 +249,6 @@ export default function Page() {
           </div>
 
           <div className="mt-8 grid gap-6 md:grid-cols-3">
-
             {/* PLAN 1 */}
             <Card className="p-6">
               <div className="flex items-baseline justify-between">
@@ -193,8 +262,10 @@ export default function Page() {
                   Individual Taxation
                 </li>
               </ul>
-              <a href="https://calendly.com/finex101"
-                 className="mt-6 inline-flex w-full justify-center rounded-2xl bg-indigo-600 px-5 py-3 font-semibold text-white">
+              <a
+                href="https://calendly.com/finex101"
+                className="mt-6 inline-flex w-full justify-center rounded-2xl bg-indigo-600 px-5 py-3 font-semibold text-white"
+              >
                 Enroll
               </a>
             </Card>
@@ -203,17 +274,27 @@ export default function Page() {
             <Card className="p-6 ring-2 ring-indigo-600">
               <div className="flex items-baseline justify-between">
                 <h3 className="text-lg font-semibold">PLAN 2</h3>
-                <div className="text-2xl font-extrabold">$1,234</div>
+                <div className="text-2xl font-extrabold">$1,299</div>
               </div>
               <p className="mt-1 text-xs text-slate-600">Duration: 2 weeks</p>
               <ul className="mt-4 space-y-2 text-sm text-slate-700">
-                <li className="flex items-start gap-2"><span className="h-1.5 w-1.5 rounded-full bg-indigo-600" /> Individual Taxation</li>
-                <li className="flex items-start gap-2"><span className="h-1.5 w-1.5 rounded-full bg-indigo-600" /> Business Formation</li>
-                <li className="flex items-start gap-2"><span className="h-1.5 w-1.5 rounded-full bg-indigo-600" /> ERO Setup</li>
-                <li className="flex items-start gap-2"><span className="h-1.5 w-1.5 rounded-full bg-indigo-600" /> Tax Software Practice</li>
+                <li className="flex items-start gap-2">
+                  <span className="h-1.5 w-1.5 rounded-full bg-indigo-600" /> Individual Taxation
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="h-1.5 w-1.5 rounded-full bg-indigo-600" /> Business Formation
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="h-1.5 w-1.5 rounded-full bg-indigo-600" /> ERO Setup
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="h-1.5 w-1.5 rounded-full bg-indigo-600" /> Tax Software Practice
+                </li>
               </ul>
-              <a href="https://calendly.com/finex101"
-                 className="mt-6 inline-flex w-full justify-center rounded-2xl bg-indigo-600 px-5 py-3 font-semibold text-white">
+              <a
+                href="https://calendly.com/finex101"
+                className="mt-6 inline-flex w-full justify-center rounded-2xl bg-indigo-600 px-5 py-3 font-semibold text-white"
+              >
                 Enroll
               </a>
             </Card>
@@ -226,24 +307,119 @@ export default function Page() {
               </div>
               <p className="mt-1 text-xs text-slate-600">Duration: 4 weeks</p>
               <ul className="mt-4 space-y-2 text-sm text-slate-700">
-                <li className="flex items-start gap-2"><span className="h-1.5 w-1.5 rounded-full bg-indigo-600" /> Individual Taxation</li>
-                <li className="flex items-start gap-2"><span className="h-1.5 w-1.5 rounded-full bg-indigo-600" /> Business Formation</li>
-                <li className="flex items-start gap-2"><span className="h-1.5 w-1.5 rounded-full bg-indigo-600" /> ERO Setup</li>
-                <li className="flex items-start gap-2"><span className="h-1.5 w-1.5 rounded-full bg-indigo-600" /> CRM Practice</li>
-                <li className="flex items-start gap-2"><span className="h-1.5 w-1.5 rounded-full bg-indigo-600" /> Tax Software Practice</li>
-                <li className="flex items-start gap-2"><span className="h-1.5 w-1.5 rounded-full bg-indigo-600" /> Corporate Return</li>
-                <li className="flex items-start gap-2"><span className="h-1.5 w-1.5 rounded-full bg-indigo-600" /> Partnership Return</li>
-                <li className="flex items-start gap-2"><span className="h-1.5 w-1.5 rounded-full bg-indigo-600" /> NYS Tax Pro Account</li>
-                <li className="flex items-start gap-2"><span className="h-1.5 w-1.5 rounded-full bg-indigo-600" /> EA Exam Scheduling</li>
-                <li className="flex items-start gap-2"><span className="h-1.5 w-1.5 rounded-full bg-indigo-600" /> 3-Month Mentorship</li>
-                <li className="flex items-start gap-2"><span className="h-1.5 w-1.5 rounded-full bg-indigo-600" /> 6-Month Video Access</li>
+                <li className="flex items-start gap-2">
+                  <span className="h-1.5 w-1.5 rounded-full bg-indigo-600" /> Individual Taxation
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="h-1.5 w-1.5 rounded-full bg-indigo-600" /> Business Formation
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="h-1.5 w-1.5 rounded-full bg-indigo-600" /> ERO Setup
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="h-1.5 w-1.5 rounded-full bg-indigo-600" /> CRM Practice
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="h-1.5 w-1.5 rounded-full bg-indigo-600" /> Tax Software Practice
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="h-1.5 w-1.5 rounded-full bg-indigo-600" /> Corporate Return
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="h-1.5 w-1.5 rounded-full bg-indigo-600" /> Partnership Return
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="h-1.5 w-1.5 rounded-full bg-indigo-600" /> NYS Tax Pro Account
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="h-1.5 w-1.5 rounded-full bg-indigo-600" /> EA Exam Scheduling
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="h-1.5 w-1.5 rounded-full bg-indigo-600" /> 3-Month Mentorship
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="h-1.5 w-1.5 rounded-full bg-indigo-600" /> 6-Month Video Access
+                </li>
               </ul>
-              <a href="https://calendly.com/finex101"
-                 className="mt-6 inline-flex w-full justify-center rounded-2xl bg-indigo-600 px-5 py-3 font-semibold text-white">
+              <a
+                href="https://calendly.com/finex101"
+                className="mt-6 inline-flex w-full justify-center rounded-2xl bg-indigo-600 px-5 py-3 font-semibold text-white"
+              >
                 Enroll
               </a>
             </Card>
+          </div>
+        </Section>
 
+        {/* NEWS */}
+        <Section id="news" className="py-14">
+          <div className="mx-auto max-w-2xl text-center">
+            <h2 className="text-2xl font-bold sm:text-3xl text-white">FINEX News & Updates</h2>
+            <p className="mt-3 text-slate-200">
+              Latest updates, tax changes, and announcements from our team.
+            </p>
+          </div>
+
+          <div className="mt-8 grid gap-6 md:grid-cols-3">
+            {/* NEWS ITEM 1 */}
+            <Card className="p-6">
+              <div className="text-xs font-semibold uppercase tracking-wide text-indigo-600">
+                January 2025
+              </div>
+              <h3 className="mt-2 text-lg font-semibold text-black">
+                2024 Tax Season Now Open
+              </h3>
+              <p className="mt-2 text-sm text-slate-700">
+                We are accepting new and returning clients for the 2024 filing season with both remote
+                and in-person options available.
+              </p>
+              <a
+                href="https://calendly.com/finex101"
+                className="mt-4 inline-flex text-sm font-semibold text-indigo-600 hover:underline"
+              >
+                Book your slot →
+              </a>
+            </Card>
+
+            {/* NEWS ITEM 2 */}
+            <Card className="p-6">
+              <div className="text-xs font-semibold uppercase tracking-wide text-indigo-600">
+                December 2024
+              </div>
+              <h3 className="mt-2 text-lg font-semibold text-black">
+                New Business Tax Planning Packages
+              </h3>
+              <p className="mt-2 text-sm text-slate-700">
+                Small businesses and self-employed clients can now enroll in our quarterly planning
+                program to avoid surprises at tax time.
+              </p>
+              <a
+                href="#pricing"
+                className="mt-4 inline-flex text-sm font-semibold text-indigo-600 hover:underline"
+              >
+                View pricing →
+              </a>
+            </Card>
+
+            {/* NEWS ITEM 3 */}
+            <Card className="p-6">
+              <div className="text-xs font-semibold uppercase tracking-wide text-indigo-600">
+                November 2024
+              </div>
+              <h3 className="mt-2 text-lg font-semibold text-black">
+                Tax Academy Cohort Enrollment
+              </h3>
+              <p className="mt-2 text-sm text-slate-700">
+                Enrollment is open for the next FINEX Tax Academy cohort. Learn individual and business
+                taxation with hands-on practice.
+              </p>
+              <a
+                href="#academy"
+                className="mt-4 inline-flex text-sm font-semibold text-indigo-600 hover:underline"
+              >
+                Learn more →
+              </a>
+            </Card>
           </div>
         </Section>
 
@@ -255,21 +431,23 @@ export default function Page() {
               <p className="mt-2 text-sm text-slate-700">Reply within one business day.</p>
 
               <div className="mt-6 space-y-3 text-sm">
-
                 {/* EMAIL REMOVED */}
-
                 <div className="flex items-center gap-2 text-black">
                   <MapPin className="h-4 w-4" /> New York, NY
                 </div>
 
                 <div className="flex flex-wrap gap-3 pt-2">
-                  <a href="https://calendly.com/finex101"
-                     className="inline-flex rounded-2xl px-5 py-3 bg-indigo-600 text-white font-semibold">
+                  <a
+                    href="https://calendly.com/finex101"
+                    className="inline-flex rounded-2xl px-5 py-3 bg-indigo-600 text-white font-semibold"
+                  >
                     Book Now
                   </a>
 
-                  <a href="https://app.taxdome.com/login"
-                     className="inline-flex rounded-2xl px-5 py-3 bg-white ring-1 ring-black/10">
+                  <a
+                    href="https://app.taxdome.com/login"
+                    className="inline-flex rounded-2xl px-5 py-3 bg-white ring-1 ring-black/10"
+                  >
                     Client Portal
                   </a>
                 </div>
@@ -300,7 +478,11 @@ export default function Page() {
 
               <div>
                 <label className="text-sm font-medium text-black">Message</label>
-                <textarea rows={4} className="rounded-xl border px-3 py-2 w-full" placeholder="Tell us a bit about your situation"></textarea>
+                <textarea
+                  rows={4}
+                  className="rounded-xl border px-3 py-2 w-full"
+                  placeholder="Tell us a bit about your situation"
+                ></textarea>
               </div>
 
               <Button as="button" className="bg-indigo-600 text-white">
@@ -350,7 +532,6 @@ export default function Page() {
             </div>
           </Section>
         </footer>
-
       </div>
     </div>
   );
