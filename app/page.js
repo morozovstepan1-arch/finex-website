@@ -22,13 +22,15 @@ const Section = ({ id, children, className = "" }) => (
 );
 
 const Card = ({ children, className = "" }) => (
-  <div className={`rounded-2xl shadow-sm ring-1 ring-white/10 bg-white/90 backdrop-blur ${className}`}>
+  <div
+    className={`rounded-2xl shadow-sm ring-1 ring-white/10 bg-white/90 backdrop-blur text-slate-900 ${className}`}
+  >
     {children}
   </div>
 );
 
 const Pill = ({ children }) => (
-  <span className="inline-flex items-center rounded-full border border-white/20 bg-white/30 px-3 py-1 text-xs font-medium backdrop-blur">
+  <span className="inline-flex items-center rounded-full border border-white/20 bg-white/30 px-3 py-1 text-xs font-medium backdrop-blur text-slate-900">
     {children}
   </span>
 );
@@ -52,8 +54,8 @@ const ListItem = ({ icon: Icon, title, children }) => (
       <Icon className="h-5 w-5" />
     </div>
     <div>
-      <h4 className="text-base font-semibold">{title}</h4>
-      <p className="text-sm text-slate-200">{children}</p>
+      <h4 className="text-base font-semibold text-slate-900">{title}</h4>
+      <p className="text-sm text-slate-600">{children}</p>
     </div>
   </div>
 );
@@ -102,13 +104,27 @@ export default function Page() {
             </a>
 
             <nav className="hidden gap-6 text-sm font-medium md:flex">
-              <a href="#services" className="hover:opacity-70">Services</a>
-              <a href="#pricing" className="hover:opacity-70">Pricing</a>
-              <a href="#process" className="hover:opacity-70">Process</a>
-              <a href="#academy" className="hover:opacity-70">Tax Academy</a>
-              <a href="#news" className="hover:opacity-70">News</a>
-              <a href="#faq" className="hover:opacity-70">FAQ</a>
-              <a href="#contact" className="hover:opacity-70">Contact</a>
+              <a href="#services" className="hover:opacity-70">
+                Services
+              </a>
+              <a href="#pricing" className="hover:opacity-70">
+                Pricing
+              </a>
+              <a href="#process" className="hover:opacity-70">
+                Process
+              </a>
+              <a href="#academy" className="hover:opacity-70">
+                Tax Academy
+              </a>
+              <a href="#news" className="hover:opacity-70">
+                News
+              </a>
+              <a href="#faq" className="hover:opacity-70">
+                FAQ
+              </a>
+              <a href="#contact" className="hover:opacity-70">
+                Contact
+              </a>
             </nav>
 
             <div className="hidden md:flex items-center gap-3">
@@ -182,8 +198,8 @@ export default function Page() {
           <div className="mt-10 grid gap-6 md:grid-cols-3">
             {/* BASIC RETURN */}
             <Card className="p-6">
-              <h3 className="text-lg font-semibold text-black">Basic Individual Return</h3>
-              <div className="mt-2 text-3xl font-extrabold text-black">$199</div>
+              <h3 className="text-lg font-semibold">Basic Individual Return</h3>
+              <div className="mt-2 text-3xl font-extrabold">$199</div>
               <p className="mt-1 text-xs text-slate-700">W-2 employees with simple returns</p>
               <ul className="mt-4 space-y-2 text-sm text-slate-700">
                 <li>✓ Federal + State return</li>
@@ -201,8 +217,8 @@ export default function Page() {
 
             {/* STANDARD RETURN */}
             <Card className="p-6 ring-2 ring-indigo-600">
-              <h3 className="text-lg font-semibold text-black">Standard Return</h3>
-              <div className="mt-2 text-3xl font-extrabold text-black">$349</div>
+              <h3 className="text-lg font-semibold">Standard Return</h3>
+              <div className="mt-2 text-3xl font-extrabold">$349</div>
               <p className="mt-1 text-xs text-slate-700">Most taxpayers choose this</p>
               <ul className="mt-4 space-y-2 text-sm text-slate-700">
                 <li>✓ All Basic features</li>
@@ -221,8 +237,8 @@ export default function Page() {
 
             {/* BUSINESS RETURN */}
             <Card className="p-6">
-              <h3 className="text-lg font-semibold text-black">Business Return</h3>
-              <div className="mt-2 text-3xl font-extrabold text-black">$699+</div>
+              <h3 className="text-lg font-semibold">Business Return</h3>
+              <div className="mt-2 text-3xl font-extrabold">$699+</div>
               <p className="mt-1 text-xs text-slate-700">S-Corp, C-Corp, Partnership, Schedule C</p>
               <ul className="mt-4 space-y-2 text-sm text-slate-700">
                 <li>✓ Federal + State returns</li>
@@ -366,7 +382,7 @@ export default function Page() {
               <div className="text-xs font-semibold uppercase tracking-wide text-indigo-600">
                 January 2025
               </div>
-              <h3 className="mt-2 text-lg font-semibold text-black">
+              <h3 className="mt-2 text-lg font-semibold">
                 2024 Tax Season Now Open
               </h3>
               <p className="mt-2 text-sm text-slate-700">
@@ -386,7 +402,7 @@ export default function Page() {
               <div className="text-xs font-semibold uppercase tracking-wide text-indigo-600">
                 December 2024
               </div>
-              <h3 className="mt-2 text-lg font-semibold text-black">
+              <h3 className="mt-2 text-lg font-semibold">
                 New Business Tax Planning Packages
               </h3>
               <p className="mt-2 text-sm text-slate-700">
@@ -406,7 +422,7 @@ export default function Page() {
               <div className="text-xs font-semibold uppercase tracking-wide text-indigo-600">
                 November 2024
               </div>
-              <h3 className="mt-2 text-lg font-semibold text-black">
+              <h3 className="mt-2 text-lg font-semibold">
                 Tax Academy Cohort Enrollment
               </h3>
               <p className="mt-2 text-sm text-slate-700">
@@ -427,12 +443,12 @@ export default function Page() {
         <Section id="contact" className="py-14">
           <Card className="grid gap-8 p-6 md:grid-cols-2 md:p-10">
             <div>
-              <h3 className="text-xl font-bold text-black">Talk to a tax pro</h3>
+              <h3 className="text-xl font-bold">Talk to a tax pro</h3>
               <p className="mt-2 text-sm text-slate-700">Reply within one business day.</p>
 
               <div className="mt-6 space-y-3 text-sm">
                 {/* EMAIL REMOVED */}
-                <div className="flex items-center gap-2 text-black">
+                <div className="flex items-center gap-2 text-slate-900">
                   <MapPin className="h-4 w-4" /> New York, NY
                 </div>
 
@@ -446,7 +462,7 @@ export default function Page() {
 
                   <a
                     href="https://app.taxdome.com/login"
-                    className="inline-flex rounded-2xl px-5 py-3 bg-white ring-1 ring-black/10"
+                    className="inline-flex rounded-2xl px-5 py-3 bg-white ring-1 ring-black/10 text-slate-900"
                   >
                     Client Portal
                   </a>
@@ -456,18 +472,25 @@ export default function Page() {
 
             <form className="grid gap-4" onSubmit={(e) => e.preventDefault()}>
               <div>
-                <label className="text-sm font-medium text-black">Name</label>
-                <input className="rounded-xl border px-3 py-2 w-full" placeholder="Your full name" />
+                <label className="text-sm font-medium text-slate-900">Name</label>
+                <input
+                  className="rounded-xl border px-3 py-2 w-full bg-white text-slate-900 placeholder-slate-400"
+                  placeholder="Your full name"
+                />
               </div>
 
               <div>
-                <label className="text-sm font-medium text-black">Email</label>
-                <input type="email" className="rounded-xl border px-3 py-2 w-full" placeholder="you@domain.com" />
+                <label className="text-sm font-medium text-slate-900">Email</label>
+                <input
+                  type="email"
+                  className="rounded-xl border px-3 py-2 w-full bg-white text-slate-900 placeholder-slate-400"
+                  placeholder="you@domain.com"
+                />
               </div>
 
               <div>
-                <label className="text-sm font-medium text-black">What do you need help with?</label>
-                <select className="rounded-xl border px-3 py-2 w-full">
+                <label className="text-sm font-medium text-slate-900">What do you need help with?</label>
+                <select className="rounded-xl border px-3 py-2 w-full bg-white text-slate-900">
                   <option>Individual tax return</option>
                   <option>Business tax return</option>
                   <option>Tax planning</option>
@@ -477,10 +500,10 @@ export default function Page() {
               </div>
 
               <div>
-                <label className="text-sm font-medium text-black">Message</label>
+                <label className="text-sm font-medium text-slate-900">Message</label>
                 <textarea
                   rows={4}
-                  className="rounded-xl border px-3 py-2 w-full"
+                  className="rounded-xl border px-3 py-2 w-full bg-white text-slate-900 placeholder-slate-400"
                   placeholder="Tell us a bit about your situation"
                 ></textarea>
               </div>
@@ -510,14 +533,30 @@ export default function Page() {
             <div className="text-sm">
               <div className="font-semibold text-white">Navigation</div>
               <ul className="mt-2 space-y-2 text-slate-300">
-                <li><a href="#services">Services</a></li>
-                <li><a href="#pricing">Pricing</a></li>
-                <li><a href="#process">Process</a></li>
-                <li><a href="#academy">Tax Academy</a></li>
-                <li><a href="#news">News</a></li>
-                <li><a href="#faq">FAQ</a></li>
-                <li><a href="#contact">Contact</a></li>
-                <li><a href="https://app.taxdome.com/login">Client Portal</a></li>
+                <li>
+                  <a href="#services">Services</a>
+                </li>
+                <li>
+                  <a href="#pricing">Pricing</a>
+                </li>
+                <li>
+                  <a href="#process">Process</a>
+                </li>
+                <li>
+                  <a href="#academy">Tax Academy</a>
+                </li>
+                <li>
+                  <a href="#news">News</a>
+                </li>
+                <li>
+                  <a href="#faq">FAQ</a>
+                </li>
+                <li>
+                  <a href="#contact">Contact</a>
+                </li>
+                <li>
+                  <a href="https://app.taxdome.com/login">Client Portal</a>
+                </li>
               </ul>
             </div>
 
