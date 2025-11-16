@@ -10,6 +10,3 @@ export default function RootLayout({ children }) {
     </html>
   );
 }
-<Link href="/news" className="hover:text-emerald-300">
-  News
-</Link>
