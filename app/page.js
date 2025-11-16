@@ -246,8 +246,8 @@ export default function Page() {
           <div className="mt-10 grid gap-6 md:grid-cols-3">
             {/* BASIC RETURN */}
             <Card className="p-6">
-              <h3 className="text-lg font-semibold">Basic Individual Return</h3>
-              <div className="mt-2 text-3xl font-extrabold">$199</div>
+              <h3 className="text-lg font-semibold">Essential</h3>
+              <div className="mt-2 text-3xl font-extrabold">$199+</div>
               <p className="mt-1 text-xs text-slate-700">W-2 employees with simple returns</p>
               <ul className="mt-4 space-y-2 text-sm text-slate-700">
                 <li>✓ Federal + State return</li>
@@ -265,8 +265,8 @@ export default function Page() {
 
             {/* STANDARD RETURN */}
             <Card className="p-6 ring-2 ring-indigo-600">
-              <h3 className="text-lg font-semibold">Standard Return</h3>
-              <div className="mt-2 text-3xl font-extrabold">$349</div>
+              <h3 className="text-lg font-semibold">Premium</h3>
+              <div className="mt-2 text-3xl font-extrabold">$449+</div>
               <p className="mt-1 text-xs text-slate-700">Most taxpayers choose this</p>
               <ul className="mt-4 space-y-2 text-sm text-slate-700">
                 <li>✓ All Basic features</li>
