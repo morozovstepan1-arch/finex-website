@@ -113,7 +113,8 @@ export default function Page() {
               <a href="#academy" className="hover:opacity-70">
                 Tax Academy
               </a>
-              <a href="#news" className="hover:opacity-70">
+              {/* Go to dedicated News page now */}
+              <a href="/news" className="hover:opacity-70">
                 News
               </a>
               <a href="#faq" className="hover:opacity-70">
@@ -490,78 +491,6 @@ export default function Page() {
           </div>
         </Section>
 
-        {/* NEWS */}
-        <Section id="news" className="py-14">
-          <div className="mx-auto max-w-2xl text-center">
-            <h2 className="text-2xl font-bold sm:text-3xl text-white">FINEX News & Updates</h2>
-            <p className="mt-3 text-slate-200">
-              Latest updates, tax changes, and announcements from our team.
-            </p>
-          </div>
-
-          <div className="mt-8 grid gap-6 md:grid-cols-3">
-            {/* NEWS ITEM 1 */}
-            <Card className="p-6">
-              <div className="text-xs font-semibold uppercase tracking-wide text-indigo-600">
-                January 2025
-              </div>
-              <h3 className="mt-2 text-lg font-semibold">
-                2024 Tax Season Now Open
-              </h3>
-              <p className="mt-2 text-sm text-slate-700">
-                We are accepting new and returning clients for the 2024 filing season with both remote
-                and in-person options available.
-              </p>
-              <a
-                href="https://calendly.com/finex101"
-                className="mt-4 inline-flex text-sm font-semibold text-indigo-600 hover:underline"
-              >
-                Book your slot →
-              </a>
-            </Card>
-
-            {/* NEWS ITEM 2 */}
-            <Card className="p-6">
-              <div className="text-xs font-semibold uppercase tracking-wide text-indigo-600">
-                December 2024
-              </div>
-              <h3 className="mt-2 text-lg font-semibold">
-                New Business Tax Planning Packages
-              </h3>
-              <p className="mt-2 text-sm text-slate-700">
-                Small businesses and self-employed clients can now enroll in our quarterly planning
-                program to avoid surprises at tax time.
-              </p>
-              <a
-                href="#pricing"
-                className="mt-4 inline-flex text-sm font-semibold text-indigo-600 hover:underline"
-              >
-                View pricing →
-              </a>
-            </Card>
-
-            {/* NEWS ITEM 3 */}
-            <Card className="p-6">
-              <div className="text-xs font-semibold uppercase tracking-wide text-indigo-600">
-                November 2024
-              </div>
-              <h3 className="mt-2 text-lg font-semibold">
-                Tax Academy Cohort Enrollment
-              </h3>
-              <p className="mt-2 text-sm text-slate-700">
-                Enrollment is open for the next FINEX Tax Academy cohort. Learn individual and business
-                taxation with hands-on practice.
-              </p>
-              <a
-                href="#academy"
-                className="mt-4 inline-flex text-sm font-semibold text-indigo-600 hover:underline"
-              >
-                Learn more →
-              </a>
-            </Card>
-          </div>
-        </Section>
-
         {/* FAQ */}
         <Section id="faq" className="py-14">
           <div className="mx-auto max-w-2xl text-center">
@@ -689,7 +618,8 @@ export default function Page() {
                 <li><a href="#pricing">Pricing</a></li>
                 <li><a href="#process">Process</a></li>
                 <li><a href="#academy">Tax Academy</a></li>
-                <li><a href="#news">News</a></li>
+                {/* Footer link now goes to /news */}
+                <li><a href="/news">News</a></li>
                 <li><a href="#faq">FAQ</a></li>
                 <li><a href="#contact">Contact</a></li>
                 <li><a href="https://app.taxdome.com/login">Client Portal</a></li>
