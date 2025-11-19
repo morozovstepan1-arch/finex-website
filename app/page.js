@@ -161,25 +161,484 @@ export default function Page() {
               </div>
             </div>
 
-            <Card className="p-6 md:p-8">
-              <div className="flex items-center gap-2 text-sm font-medium text-indigo-600">
-                <ShieldCheck className="h-5 w-5 text-indigo-600" /> Secure client portal
+            /* -------------------- Tax deadlines data -------------------- */
+
+const MONTH_NAMES = [
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December",
+];
+
+// month: 0–11, null = every month
+const TAX_DEADLINES = [
+  // INDIVIDUAL / ESTIMATED
+  {
+    id: 1,
+    month: 0,
+    day: 15,
+    fullDate: "January 15",
+    category: "Estimated Taxes",
+    type: "Federal",
+    title: "Q4 federal estimated tax payment",
+    appliesTo: "Self-employed / 1099",
+    details: "Final estimated payment for prior tax year (Form 1040-ES).",
+  },
+  {
+    id: 2,
+    month: 3,
+    day: 15,
+    fullDate: "April 15",
+    category: "Individual Tax Day",
+    type: "Federal",
+    title: "Individual income tax return (Form 1040)",
+    appliesTo: "Individuals",
+    details:
+      "Tax Day for most taxpayers. File return or extension and pay any balance due.",
+  },
+  {
+    id: 3,
+    month: 5,
+    day: 15,
+    fullDate: "June 15",
+    category: "Estimated Taxes",
+    type: "Federal",
+    title: "Q2 federal estimated tax payment",
+    appliesTo: "Self-employed / 1099",
+    details: "Second quarterly estimated payment (Form 1040-ES).",
+  },
+  {
+    id: 4,
+    month: 8,
+    day: 15,
+    fullDate: "September 15",
+    category: "Estimated Taxes",
+    type: "Federal",
+    title: "Q3 federal estimated tax payment",
+    appliesTo: "Self-employed / 1099",
+    details: "Third quarterly estimated payment (Form 1040-ES).",
+  },
+
+  // S CORP / PARTNERSHIP
+  {
+    id: 5,
+    month: 2,
+    day: 15,
+    fullDate: "March 15",
+    category: "S Corp",
+    type: "Federal",
+    title: "S corporation tax return (Form 1120-S)",
+    appliesTo: "Calendar-year S corporations",
+    details: "File return or extension and issue Schedule K-1s.",
+  },
+  {
+    id: 6,
+    month: 2,
+    day: 15,
+    fullDate: "March 15",
+    category: "S Corp",
+    type: "Federal",
+    title: "Partnership tax return (Form 1065)",
+    appliesTo: "Calendar-year partnerships/LLCs",
+    details: "File return or extension and issue Schedule K-1s to partners.",
+  },
+
+  // NY SALES TAX – Quarterly (most common)
+  {
+    id: 7,
+    month: 2,
+    day: 20,
+    fullDate: "March 20",
+    category: "Sales Tax NY",
+    type: "NY State",
+    title: "NY sales tax – Q4 filing",
+    appliesTo: "Quarterly filers",
+    details:
+      "File return and pay NY sales tax collected for the prior quarter.",
+  },
+  {
+    id: 8,
+    month: 5,
+    day: 20,
+    fullDate: "June 20",
+    category: "Sales Tax NY",
+    type: "NY State",
+    title: "NY sales tax – Q1 filing",
+    appliesTo: "Quarterly filers",
+    details: "Typical due date for NY Q1 sales tax return and payment.",
+  },
+  {
+    id: 9,
+    month: 8,
+    day: 20,
+    fullDate: "September 20",
+    category: "Sales Tax NY",
+    type: "NY State",
+    title: "NY sales tax – Q2 filing",
+    appliesTo: "Quarterly filers",
+    details: "Typical due date for NY Q2 sales tax return and payment.",
+  },
+  {
+    id: 10,
+    month: 11,
+    day: 20,
+    fullDate: "December 20",
+    category: "Sales Tax NY",
+    type: "NY State",
+    title: "NY sales tax – Q3 filing",
+    appliesTo: "Quarterly filers",
+    details: "Typical due date for NY Q3 sales tax return and payment.",
+  },
+
+  // PAYROLL – 941s + deposits
+  {
+    id: 11,
+    month: 3,
+    day: 30,
+    fullDate: "April 30",
+    category: "Payroll",
+    type: "Federal",
+    title: "Form 941 – Q1 filing",
+    appliesTo: "Employers with payroll",
+    details: "Quarter 1 employer’s federal payroll tax return due.",
+  },
+  {
+    id: 12,
+    month: 6,
+    day: 31,
+    fullDate: "July 31",
+    category: "Payroll",
+    type: "Federal",
+    title: "Form 941 – Q2 filing",
+    appliesTo: "Employers with payroll",
+    details: "Quarter 2 employer’s federal payroll tax return due.",
+  },
+  {
+    id: 13,
+    month: 9,
+    day: 31,
+    fullDate: "October 31",
+    category: "Payroll",
+    type: "Federal",
+    title: "Form 941 – Q3 filing",
+    appliesTo: "Employers with payroll",
+    details: "Quarter 3 employer’s federal payroll tax return due.",
+  },
+  {
+    id: 14,
+    month: 0,
+    day: 31,
+    fullDate: "January 31",
+    category: "Payroll",
+    type: "Federal",
+    title: "Form 941 – Q4 filing + W-2s",
+    appliesTo: "Employers with payroll",
+    details:
+      "Quarter 4 Form 941 and Forms W-2/W-3 typically due to SSA and employees.",
+  },
+
+  // Shown every month (no specific day)
+  {
+    id: 15,
+    month: null, // every month
+    day: null,
+    fullDate: "Varies",
+    category: "Payroll",
+    type: "Federal",
+    title: "Federal payroll tax deposits",
+    appliesTo: "Employers with payroll",
+    details:
+      "Monthly or semi-weekly deposit schedule depending on IRS lookback rules.",
+  },
+];
+
+const FILTERS = [
+  { key: "All", label: "All deadlines" },
+  { key: "Individual Tax Day", label: "Individual / Tax Day" },
+  { key: "S Corp", label: "S-Corp & Partnership" },
+  { key: "Sales Tax NY", label: "NY Sales Tax" },
+  { key: "Estimated Taxes", label: "Estimated Taxes" },
+  { key: "Payroll", label: "Payroll" },
+];
+
+/* -------------------- Multi-month calendar component -------------------- */
+
+const TaxDeadlineCalendar = () => {
+  const [activeFilter, setActiveFilter] = useState("All");
+  const [monthOffset, setMonthOffset] = useState(0);
+
+  const today = new Date();
+  const baseYear = today.getFullYear();
+  const baseMonth = today.getMonth();
+
+  const displayDate = new Date(baseYear, baseMonth + monthOffset, 1);
+  const displayYear = displayDate.getFullYear();
+  const displayMonthIndex = displayDate.getMonth();
+  const displayMonthName = MONTH_NAMES[displayMonthIndex];
+
+  const daysInMonth = new Date(displayYear, displayMonthIndex + 1, 0).getDate();
+  const firstWeekday = displayDate.getDay(); // 0 = Sun
+
+  const getEventsForDay = (day) =>
+    TAX_DEADLINES.filter((d) => {
+      if (d.day == null) return false;
+      const monthOK = d.month === displayMonthIndex;
+      const dayOK = d.day === day;
+      const filterOK = activeFilter === "All" || d.category === activeFilter;
+      return monthOK && dayOK && filterOK;
+    });
+
+  const otherThisMonth = TAX_DEADLINES.filter((d) => {
+    const monthOK =
+      d.month === null || d.month === displayMonthIndex; // null = every month
+    const noDay = d.day == null;
+    const filterOK = activeFilter === "All" || d.category === activeFilter;
+    return monthOK && noDay && filterOK;
+  });
+
+  const totalCells = firstWeekday + daysInMonth;
+  const cells = Array.from({ length: totalCells }, (_, i) => {
+    const dayNumber = i - firstWeekday + 1;
+    if (dayNumber < 1 || dayNumber > daysInMonth) return { dayNumber: null };
+
+    const events = getEventsForDay(dayNumber);
+    const hasEvents = events.length > 0;
+    const isToday =
+      dayNumber === today.getDate() &&
+      displayMonthIndex === today.getMonth() &&
+      displayYear === today.getFullYear();
+
+    return { dayNumber, events, hasEvents, isToday };
+  });
+
+  const allEventsForList = TAX_DEADLINES.filter((d) => {
+    const monthOK =
+      d.month === displayMonthIndex || (d.month === null && d.day == null);
+    const filterOK = activeFilter === "All" || d.category === activeFilter;
+    return monthOK && filterOK;
+  }).sort((a, b) => {
+    if (a.day == null && b.day == null) return 0;
+    if (a.day == null) return 1;
+    if (b.day == null) return -1;
+    return a.day - b.day;
+  });
+
+  return (
+    <Section id="deadlines" className="py-20">
+      <div className="flex flex-col gap-6">
+        {/* Header */}
+        <div className="flex flex-col gap-3 max-w-3xl">
+          <div className="inline-flex items-center gap-2 rounded-full bg-emerald-400/10 px-3 py-1 text-xs font-medium text-emerald-300 ring-1 ring-emerald-400/40 w-fit">
+            <CalendarDays className="h-3.5 w-3.5" />
+            <span>Key IRS & NY deadlines</span>
+          </div>
+          <div className="flex items-center justify-between gap-3">
+            <div>
+              <h2 className="text-2xl sm:text-3xl font-semibold tracking-tight text-white">
+                Calendar for{" "}
+                <span className="text-emerald-300">
+                  {displayMonthName} {displayYear}
+                </span>
+              </h2>
+              <p className="text-sm sm:text-base text-slate-300/90 mt-1">
+                Scroll through months and see IRS, S-corp, NY sales tax,
+                estimated tax, and payroll deadlines highlighted.
+              </p>
+            </div>
+            <div className="hidden sm:flex items-center gap-2">
+              <button
+                type="button"
+                onClick={() => setMonthOffset((n) => n - 1)}
+                className="inline-flex items-center justify-center h-8 w-8 rounded-full border border-slate-700 bg-slate-900/70 text-slate-200 hover:border-emerald-400 hover:text-emerald-300 transition"
+              >
+                <ChevronLeft className="h-4 w-4" />
+              </button>
+              <button
+                type="button"
+                onClick={() => setMonthOffset(0)}
+                className="px-3 py-1.5 rounded-full text-xs font-medium border border-slate-700 bg-slate-900/70 text-slate-200 hover:border-emerald-400 hover:text-emerald-300 transition"
+              >
+                This month
+              </button>
+              <button
+                type="button"
+                onClick={() => setMonthOffset((n) => n + 1)}
+                className="inline-flex items-center justify-center h-8 w-8 rounded-full border border-slate-700 bg-slate-900/70 text-slate-200 hover:border-emerald-400 hover:text-emerald-300 transition"
+              >
+                <ChevronRight className="h-4 w-4" />
+              </button>
+            </div>
+          </div>
+        </div>
+
+        {/* Filters */}
+        <div className="flex flex-wrap gap-2">
+          {FILTERS.map((filter) => (
+            <button
+              key={filter.key}
+              type="button"
+              onClick={() => setActiveFilter(filter.key)}
+              className={`inline-flex items-center gap-2 rounded-full border px-3 py-1.5 text-xs sm:text-sm transition
+                ${
+                  activeFilter === filter.key
+                    ? "border-emerald-300 bg-emerald-400/90 text-slate-950 shadow-sm"
+                    : "border-slate-700 bg-slate-900/60 text-slate-200 hover:border-emerald-400 hover:text-emerald-300"
+                }`}
+            >
+              {filter.key === "Estimated Taxes" && (
+                <DollarSign className="h-3.5 w-3.5" />
+              )}
+              {filter.key === "Payroll" && <Clock className="h-3.5 w-3.5" />}
+              {filter.key === "All" && (
+                <CalendarDays className="h-3.5 w-3.5" />
+              )}
+              <span>{filter.label}</span>
+            </button>
+          ))}
+        </div>
+
+        {/* Calendar + list */}
+        <Card className="mt-2 bg-slate-900/80 ring-slate-800 text-slate-100">
+          <div className="p-4 sm:p-6 space-y-6">
+            {/* Mobile month controls */}
+            <div className="flex items-center justify-between gap-3 sm:hidden">
+              <button
+                type="button"
+                onClick={() => setMonthOffset((n) => n - 1)}
+                className="inline-flex items-center justify-center h-8 w-8 rounded-full border border-slate-700 bg-slate-950/60 text-slate-200 hover:border-emerald-400 hover:text-emerald-300 transition"
+              >
+                <ChevronLeft className="h-4 w-4" />
+              </button>
+              <span className="text-sm font-medium text-slate-100">
+                {displayMonthName} {displayYear}
+              </span>
+              <button
+                type="button"
+                onClick={() => setMonthOffset((n) => n + 1)}
+                className="inline-flex items-center justify-center h-8 w-8 rounded-full border border-slate-700 bg-slate-950/60 text-slate-200 hover:border-emerald-400 hover:text-emerald-300 transition"
+              >
+                <ChevronRight className="h-4 w-4" />
+              </button>
+            </div>
+
+            {/* Month grid */}
+            <div>
+              <div className="grid grid-cols-7 text-[11px] font-medium text-slate-400 mb-2">
+                {["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].map((d) => (
+                  <div key={d} className="text-center">
+                    {d}
+                  </div>
+                ))}
               </div>
-              <div className="mt-4 grid gap-4 sm:grid-cols-2">
-                <ListItem icon={FileText} title="Individual & Family Returns">
-                  W-2, 1099, investments, rentals, FBAR, ITIN.
-                </ListItem>
-                <ListItem icon={Calculator} title="Business & Self-Employed">
-                  S-Corp, C-Corp, Partnerships, Schedule C.
-                </ListItem>
-                <ListItem icon={ShieldCheck} title="Audit Defense">
-                  IRS & State notice resolution.
-                </ListItem>
-                <ListItem icon={Clock} title="Year-Round Support">
-                  Quarterly planning + proactive advice.
-                </ListItem>
+
+              <div className="grid grid-cols-7 gap-1">
+                {cells.map((cell, idx) => {
+                  if (!cell.dayNumber) {
+                    return <div key={idx} className="h-9 sm:h-10" />;
+                  }
+
+                  const { dayNumber, hasEvents, isToday } = cell;
+
+                  return (
+                    <button
+                      key={idx}
+                      type="button"
+                      className={`relative flex items-center justify-center h-9 sm:h-10 rounded-full text-xs sm:text-sm
+                        ${
+                          hasEvents
+                            ? "bg-emerald-400 text-slate-950 hover:bg-emerald-300"
+                            : "text-slate-200 hover:bg-slate-800/70"
+                        }
+                        ${isToday ? "ring-2 ring-emerald-300/70" : ""}
+                      `}
+                    >
+                      <span>{dayNumber}</span>
+                      {hasEvents && (
+                        <span className="absolute -bottom-1 h-1.5 w-1.5 rounded-full bg-emerald-900/70" />
+                      )}
+                    </button>
+                  );
+                })}
               </div>
-            </Card>
+
+              <p className="mt-3 text-[11px] text-slate-400">
+                Green dates have one or more tax deadlines in the selected
+                category.
+              </p>
+            </div>
+
+            {/* Event list under calendar */}
+            <div className="border-t border-slate-800 pt-4">
+              {allEventsForList.length === 0 ? (
+                <p className="text-sm text-slate-400">
+                  No major deadlines this month for this category.
+                </p>
+              ) : (
+                <div className="space-y-3">
+                  {allEventsForList.map((item) => (
+                    <div
+                      key={item.id}
+                      className="flex flex-col gap-1 text-xs sm:text-sm"
+                    >
+                      <div className="flex items-center justify-between gap-2">
+                        <div className="flex items-center gap-2">
+                          <span className="text-[11px] font-medium text-slate-400 uppercase tracking-wide">
+                            {item.day
+                              ? `${displayMonthName} ${item.day}`
+                              : item.fullDate}
+                          </span>
+                          <span className="inline-flex items-center rounded-full bg-slate-800 px-2 py-0.5 text-[10px] font-medium text-slate-200">
+                            {item.category}
+                          </span>
+                        </div>
+                        <span className="text-[11px] text-slate-500">
+                          {item.type}
+                        </span>
+                      </div>
+                      <div className="font-semibold text-slate-100">
+                        {item.title}
+                      </div>
+                      <p className="text-[12px] text-slate-300">
+                        {item.details}
+                      </p>
+                      {item.appliesTo && (
+                        <p className="text-[11px] text-slate-400">
+                          Applies to: {item.appliesTo}
+                        </p>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              )}
+
+              {otherThisMonth.length > 0 && (
+                <p className="mt-2 text-[11px] text-slate-400">
+                  Includes monthly / variable obligations like payroll tax
+                  deposits.
+                </p>
+              )}
+
+              <p className="mt-3 text-[11px] text-slate-500">
+                This calendar is for general information only and does not
+                replace official IRS, NYS, or payroll service notices. Dates may
+                shift when they fall on weekends or holidays.
+              </p>
+            </div>
+          </div>
+        </Card>
+      </div>
+    </Section>
+  );
+};
+
           </motion.div>
         </Section>
 
