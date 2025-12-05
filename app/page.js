@@ -125,7 +125,7 @@ export default function Page() {
             </nav>
 
             <div className="hidden md:flex items-center gap-3">
-              <Button href="https://calendly.com/finex101" className="bg-indigo-600 text-white">
+              <Button href="https://calendly.com/eztax101" className="bg-indigo-600 text-white">
                 Book Now
               </Button>
               <Button href="https://app.taxdome.com/login" className="bg-white text-slate-900">
@@ -152,7 +152,7 @@ export default function Page() {
                 Transparent pricing, fast turnaround, and year-round support from licensed professionals.
               </p>
               <div className="mt-6 flex flex-col gap-3 sm:flex-row">
-                <Button href="https://calendly.com/finex101" className="bg-indigo-600 text-white">
+                <Button href="https://calendly.com/eztax101" className="bg-indigo-600 text-white">
                   Book Now
                 </Button>
                 <Button href="https://app.taxdome.com/login" className="bg-white text-slate-900">
@@ -256,7 +256,7 @@ export default function Page() {
                 <li>✓ 3-month support</li>
               </ul>
               <a
-                href="https://calendly.com/finex101"
+                href="https://calendly.com/eztax101"
                 className="mt-6 inline-flex w-full justify-center rounded-2xl bg-indigo-600 px-5 py-3 font-semibold text-white"
               >
                 Start Filing
@@ -276,7 +276,7 @@ export default function Page() {
                 <li>✓ Child tax credits</li>
               </ul>
               <a
-                href="https://calendly.com/finex101"
+                href="https://calendly.com/eztax101"
                 className="mt-6 inline-flex w-full justify-center rounded-2xl bg-indigo-600 px-5 py-3 font-semibold text-white"
               >
                 Start Filing
@@ -296,7 +296,7 @@ export default function Page() {
                 <li>✓ Year-round support</li>
               </ul>
               <a
-                href="https://calendly.com/finex101"
+                href="https://calendly.com/eztax101"
                 className="mt-6 inline-flex w-full justify-center rounded-2xl bg-indigo-600 px-5 py-3 font-semibold text-white"
               >
                 Start Filing
@@ -373,7 +373,7 @@ export default function Page() {
                 <li>✓ Secure messaging inside the portal</li>
                 <li>✓ Support even after your return is filed</li>
               </ul>
-              <Button href="https://calendly.com/finex101" className="mt-6 bg-indigo-600 text-white w-full justify-center">
+              <Button href="https://calendly.com/eztax101" className="mt-6 bg-indigo-600 text-white w-full justify-center">
                 Start the process
               </Button>
             </Card>
@@ -402,7 +402,7 @@ export default function Page() {
                 </li>
               </ul>
               <a
-                href="https://calendly.com/finex101"
+                href="https://calendly.com/eztax101"
                 className="mt-6 inline-flex w-full justify-center rounded-2xl bg-indigo-600 px-5 py-3 font-semibold text-white"
               >
                 Enroll
@@ -431,7 +431,7 @@ export default function Page() {
                 </li>
               </ul>
               <a
-                href="https://calendly.com/finex101"
+                href="https://calendly.com/eztax101"
                 className="mt-6 inline-flex w-full justify-center rounded-2xl bg-indigo-600 px-5 py-3 font-semibold text-white"
               >
                 Enroll
@@ -481,7 +481,7 @@ export default function Page() {
                 </li>
               </ul>
               <a
-                href="https://calendly.com/finex101"
+                href="https://calendly.com/eztax101"
                 className="mt-6 inline-flex w-full justify-center rounded-2xl bg-indigo-600 px-5 py-3 font-semibold text-white"
               >
                 Enroll
@@ -513,7 +513,7 @@ export default function Page() {
                 and in-person options available.
               </p>
               <a
-                href="https://calendly.com/finex101"
+                href="https://calendly.com/eztax101"
                 className="mt-4 inline-flex text-sm font-semibold text-indigo-600 hover:underline"
               >
                 Book your slot →
@@ -606,7 +606,7 @@ export default function Page() {
 
                 <div className="flex flex-wrap gap-3 pt-2">
                   <a
-                    href="https://calendly.com/finex101"
+                    href="https://calendly.com/eztax101"
                     className="inline-flex rounded-2xl px-5 py-3 bg-indigo-600 text-white font-semibold"
                   >
                     Book Now
